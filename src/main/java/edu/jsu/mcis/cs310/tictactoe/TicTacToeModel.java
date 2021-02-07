@@ -107,8 +107,6 @@ public class TicTacToeModel {
             return false;
         }
         
-        // this is a stub; you may need to remove it later! (stub removed)
-        
     }
     
     /**
@@ -141,8 +139,6 @@ public class TicTacToeModel {
             return false;
         }
         
-        // this is a stub; you may need to remove it later! (stub removed)
-        
     }
     
     /**
@@ -156,14 +152,12 @@ public class TicTacToeModel {
     private boolean isSquareMarked(int row, int col) {
                 
         // INSERT YOUR CODE HERE
-        if(board[row][col] != TicTacToeSquare.EMPTY){
+        if(getSquare(row, col) != TicTacToeSquare.EMPTY){
             return true;
         }
         else{
             return false;
         }
-        
-        // this is a stub; you may need to remove it later! (stub removed)
             
     }
     
@@ -181,7 +175,7 @@ public class TicTacToeModel {
         // INSERT YOUR CODE HERE
         TicTacToeSquare content = board[row][col];
         
-        return content; // this is a stub; you should remove it later! (stub overwritten)
+        return content; 
             
     }
     
@@ -196,8 +190,24 @@ public class TicTacToeModel {
     public TicTacToeState getState() {
         
         // INSERT YOUR CODE HERE
+        TicTacToeState gameState;
+        TicTacToeSquare xPlayer = TicTacToeSquare.X;
+        TicTacToeSquare oPlayer = TicTacToeSquare.O;
+
+        if(isMarkWin(xPlayer)){
+            gameState = TicTacToeState.X;
+        }
+        else if(isMarkWin(oPlayer)){
+            gameState = TicTacToeState.O;
+        }
+        else if(isTie()){
+            gameState = TicTacToeState.TIE;
+        }
+        else{
+            gameState = TicTacToeState.NONE;
+        }
         
-        return null; // this is a stub; you should remove it later!
+        return gameState;
         
     }
     
@@ -212,9 +222,86 @@ public class TicTacToeModel {
     private boolean isMarkWin(TicTacToeSquare mark) {
         
         // INSERT YOUR CODE HERE
-        
-        
-        return false; // this is a stub; you may need to remove it later!
+        boolean horizontalWin = false;
+        boolean verticalWin = false;
+        boolean diagonalFromLeftWin = false;
+        boolean diagonalFromRightWin = false;
+        boolean diagonalWin = false;
+        int count;
+        int leftDiagonalCount = 0;
+        int rightDiagonalCount = 0;
+
+        //check for horizonal win
+        for(int i=0; i<dimension; i++){
+            count = 0;
+
+            for(int j=0; j<dimension; j++){
+
+                if(getSquare(i, j).equals(mark)){
+                    count++;
+                }
+
+                if(count == dimension){
+                    horizontalWin = true;
+                }
+
+            }
+        }
+
+        //check for vertical win
+        for(int i=0; i<dimension; i++){
+            count = 0;
+
+            for(int j=0; j<dimension; j++){
+
+                if(getSquare(i, j).equals(mark)){
+                    count++;
+                }
+
+                if(count == dimension){
+                    verticalWin = true;
+                }
+
+            }
+        }
+
+        //check for diagonal win from the left
+        for(int i=0, j=0; i<dimension; i++, j++){
+
+            if(getSquare(i, j).equals(mark)){
+                leftDiagonalCount++;
+            }
+
+            if(leftDiagonalCount == dimension){
+                diagonalFromLeftWin = true;
+            }
+
+        }
+
+        //check for diagonal win from the right
+        for(int i=0, j=dimension-1; i<dimension; i++, j--){
+
+            if(getSquare(i, j).equals(mark)){
+                rightDiagonalCount++;
+            }
+
+            if(rightDiagonalCount == dimension){
+                diagonalFromRightWin = true;
+            }
+
+        }
+
+        if(diagonalFromLeftWin || diagonalFromRightWin){
+            diagonalWin = true;
+        }
+
+        //Check for horizontal, vertical, or diagonal win
+        if(horizontalWin || verticalWin || diagonalWin){
+            return true;
+        }
+        else{
+            return false;
+        }
         
     }
     
@@ -227,8 +314,30 @@ public class TicTacToeModel {
     private boolean isTie() {
         
         // INSERT YOUR CODE HERE
-        
-        return false; // this is a stub; you may need to remove it later!
+        int takenSpaces = 0;
+        int boardSpaces = dimension * dimension;
+        boolean fullBoard = false;
+
+        for(int i=0; i<dimension; i++){
+
+            for(int j=0; j<dimension; j++){
+                if(getSquare(i, j) != TicTacToeSquare.EMPTY){
+                    takenSpaces++;
+                }
+            }
+
+        }
+
+        if(takenSpaces == boardSpaces){
+            fullBoard = true;
+        }
+
+        if(fullBoard){
+            return true;
+        }
+        else{
+            return false;
+        }
         
     }
 

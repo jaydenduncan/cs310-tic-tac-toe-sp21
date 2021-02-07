@@ -1,9 +1,11 @@
 package edu.jsu.mcis.cs310.tictactoe;
 
+import java.util.Scanner;
+
 /**
 * TicTacToeController implements the Controller for the Tic-Tac-Toe game.
 *
-* @author  Your Name
+* @author  Jayden Duncan
 * @version 1.0
 */
 public class TicTacToeController {
@@ -46,6 +48,29 @@ public class TicTacToeController {
         /* MAIN LOOP (repeats until game is over) */
 
         // INSERT YOUR CODE HERE
+        Scanner console = new Scanner(System.in);
+
+        String numbers;
+        int row;
+        int col;
+        boolean successful;
+        TicTacToe obj;
+
+        while(!(model.isGameover())){
+            view.showBoard(model.toString());
+
+            do{
+                obj = view.getNextMove(model.isXTurn());
+                row = obj.getRow();
+                col = obj.getCol();
+                successful = model.makeMark(row, col);
+
+                if(!successful){
+                    view.showInputError();
+                }
+
+            }while(!successful);
+        }
         
         /* Display Results and Exit */
 

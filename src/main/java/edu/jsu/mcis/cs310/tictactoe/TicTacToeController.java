@@ -48,13 +48,10 @@ public class TicTacToeController {
         /* MAIN LOOP (repeats until game is over) */
 
         // INSERT YOUR CODE HERE
-        Scanner console = new Scanner(System.in);
-
-        String numbers;
         int row;
         int col;
-        boolean successful;
-        TicTacToe obj;
+        boolean successful = false;
+        TicTacToeMove obj;
 
         while(!(model.isGameover())){
             view.showBoard(model.toString());

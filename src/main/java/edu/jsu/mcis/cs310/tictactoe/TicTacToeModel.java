@@ -394,6 +394,27 @@ public class TicTacToeModel {
         StringBuilder output = new StringBuilder();
         
         // INSERT YOUR CODE HERE
+        StringBuilder columnLabel = new StringBuilder();
+        StringBuilder rows = new StringBuilder();
+        columnLabel.append("  ");
+        for(int i=0; i<dimension; i++){
+            columnLabel.append(String.valueOf(i));
+        }
+
+        for(int i=0; i<dimension; i++){
+
+            rows.append(String.valueOf(i) + "  ");
+
+            for(int j=0; j<dimension; j++){
+                rows.append(getSquare(i, j).toString());
+            }
+
+            rows.append("\n");
+
+        }
+
+        output.append(columnLabel.toString());
+        output.append("\n" + rows.toString());
         
         return output.toString();
         

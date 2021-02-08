@@ -55,7 +55,7 @@ public class TicTacToeView {
 
         TicTacToeMove move = new TicTacToeMove(row, column);
         
-        return move; // this is a stub; you should remove it later! (stub overwritten)
+        return move; 
 
     }
     

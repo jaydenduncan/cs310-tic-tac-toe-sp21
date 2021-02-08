@@ -51,15 +51,15 @@ public class TicTacToeController {
         int row;
         int col;
         boolean successful = false;
-        TicTacToeMove obj;
+        TicTacToeMove playerMove;
 
         while(!(model.isGameover())){
             view.showBoard(model.toString());
 
             do{
-                obj = view.getNextMove(model.isXTurn());
-                row = obj.getRow();
-                col = obj.getCol();
+                playerMove = view.getNextMove(model.isXTurn());
+                row = playerMove.getRow();
+                col = playerMove.getCol();
                 successful = model.makeMark(row, col);
 
                 if(!successful){

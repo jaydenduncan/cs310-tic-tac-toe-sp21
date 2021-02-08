@@ -83,9 +83,13 @@ public class TicTacToeModel {
         boolean marked;
 
         inRange = isValidSquare(row, col);
+        if(!inRange){
+            return false;
+        }
+
         marked = isSquareMarked(row, col);
 
-        if(inRange && !marked){
+        if(!marked){
 
             if(xTurn){
                 board[row][col] = TicTacToeSquare.X;
@@ -237,7 +241,7 @@ public class TicTacToeModel {
 
             for(int j=0; j<dimension; j++){
 
-                if(getSquare(i, j).equals(mark)){
+                if(getSquare(i, j).toString().equals(mark.toString())){
                     count++;
                 }
 
@@ -254,7 +258,7 @@ public class TicTacToeModel {
 
             for(int j=0; j<dimension; j++){
 
-                if(getSquare(i, j).equals(mark)){
+                if(getSquare(j, i).toString().equals(mark.toString())){
                     count++;
                 }
 
@@ -268,7 +272,7 @@ public class TicTacToeModel {
         //check for diagonal win from the left
         for(int i=0, j=0; i<dimension; i++, j++){
 
-            if(getSquare(i, j).equals(mark)){
+            if(getSquare(i, j).toString().equals(mark.toString())){
                 leftDiagonalCount++;
             }
 
@@ -281,7 +285,7 @@ public class TicTacToeModel {
         //check for diagonal win from the right
         for(int i=0, j=dimension-1; i<dimension; i++, j--){
 
-            if(getSquare(i, j).equals(mark)){
+            if(getSquare(i, j).toString().equals(mark.toString())){
                 rightDiagonalCount++;
             }
 
@@ -403,7 +407,7 @@ public class TicTacToeModel {
 
         for(int i=0; i<dimension; i++){
 
-            rows.append(String.valueOf(i) + "  ");
+            rows.append(String.valueOf(i) + " ");
 
             for(int j=0; j<dimension; j++){
                 rows.append(getSquare(i, j).toString());

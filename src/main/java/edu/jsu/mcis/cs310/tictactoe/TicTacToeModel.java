@@ -417,7 +417,7 @@ public class TicTacToeModel {
 
         }
 
-        output.append(columnLabel.toString());
+        output.append(columnLabel.toString() + " ");
         output.append("\n" + rows.toString());
         
         return output.toString();

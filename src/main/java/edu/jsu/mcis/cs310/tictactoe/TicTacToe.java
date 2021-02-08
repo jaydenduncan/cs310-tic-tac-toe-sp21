@@ -54,7 +54,12 @@ public class TicTacToe {
         
         /* Start Main Game Loop */
         
-        controller.start();
+        try{
+            controller.start();
+        }
+        catch(Exception e){
+            System.out.println("Error with start() method");
+        }
         
     }
     

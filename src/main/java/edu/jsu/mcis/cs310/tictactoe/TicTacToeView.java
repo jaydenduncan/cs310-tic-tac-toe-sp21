@@ -136,7 +136,7 @@ public class TicTacToeView extends JPanel {
     * This method updates the result label to display the final result of the
     * game, or any other message specified by the caller.
     * 
-    * @param message  the message to be displayed
+    * @param message  the message to be displayed 
     */
     public void showResult(String message) {
         

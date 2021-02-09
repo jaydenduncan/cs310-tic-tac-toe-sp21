@@ -10,7 +10,7 @@ public class TicTacToeModel {
     
     /**
      * The contents of the Tic-Tac-Toe game board
-     */
+     */ 
     private TicTacToeSquare[][] board;
     
     /**

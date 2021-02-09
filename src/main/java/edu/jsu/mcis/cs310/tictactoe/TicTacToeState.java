@@ -11,12 +11,12 @@ public enum TicTacToeState {
     /**
      * The game is over, and X is the winner
      */    
-    X("X"),
+    X("X!"),
     
     /**
      * The game is over, and O is the winner
      */
-    O("O"),
+    O("O!"),
     
     /**
      * The game has ended in a tie (no winner)
